@@ -8,4 +8,4 @@ class SearchWordValidator(BaseModel):
     def validator_search_word(cls, search: str) -> str:
         if not search:
             raise ValueError('search is none')
-        return search.capitalize()
+        return search.lower()

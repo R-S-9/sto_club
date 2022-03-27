@@ -41,3 +41,12 @@ class SearchResultDao:
         return service.servicesto_set.filter(
                 name__icontains=search_word
             ).values('name', 'service_check')
+
+    @staticmethod
+    def get_possible_services(search_word: str) -> Optional[ServiceStation]:
+        data = ServiceStation.objects.filter(
+            servicesto__name__icontains=search_word
+        ).distinct()
+        print(data)
+
+        return
