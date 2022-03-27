@@ -1,3 +1,4 @@
+import json
 import uuid
 
 from django.db import models
@@ -224,3 +225,10 @@ def _split_a_sentence_for_improved_search(sentence):
 
         if sentence.exists():
             return service
+
+
+class UUIDEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, uuid.UUID):
+            return obj.hex
+        return json.JSONEncoder.default(self, obj)
