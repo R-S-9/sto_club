@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # app
+    'app_users',
     'mainapp',
 
     # libs
@@ -87,6 +88,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Настройка для входа в систему через Email
+AUTHENTICATION_BACKENDS = ['app_users.models.EmailBackend']
+
 LANGUAGE_CODE = 'ru-RU'
 TIME_ZONE = 'Asia/Novosibirsk'
 
@@ -94,24 +98,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_PORT = os.environ.get("EMAIL_PORT")
-
-EMAIL_HOST_USER = os.environ.get("EMAIL")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
-
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-
-SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
