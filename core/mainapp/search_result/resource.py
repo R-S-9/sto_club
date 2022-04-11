@@ -38,6 +38,12 @@ class SearchResult(View):
             services, search_word = SearchResultUtils.\
                 get_data_for_list_of_search_options(corrected_words)
 
+        if not services:
+            return JsonResponse(
+                data={"error": "Введенные вами услуги, не найдены"},
+                status=400
+            )
+
         data: list = SearchResultUtils.get_data_of_services(
             services, search_word
         )

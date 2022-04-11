@@ -22,7 +22,9 @@ class SearchResultUtils:
 
         query_set_list = list(set(query_set_list))
 
-        return [query_set_list[0], found_words]
+        return [
+            query_set_list[0] if len(query_set_list) > 0 else None, found_words
+        ]
 
     @staticmethod
     def get_data_of_services(

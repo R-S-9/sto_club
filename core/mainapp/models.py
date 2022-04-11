@@ -5,6 +5,13 @@ from django.db import models
 from django.utils import timezone
 
 
+class UUIDEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, uuid.UUID):
+            return obj.hex
+        return json.JSONEncoder.default(self, obj)
+
+
 # Функция get_or_none для Django
 class MyQuerySet(models.QuerySet):
     def get_or_none(self, **kwargs):
@@ -225,10 +232,3 @@ def _split_a_sentence_for_improved_search(sentence):
 
         if sentence.exists():
             return service
-
-
-class UUIDEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, uuid.UUID):
-            return obj.hex
-        return json.JSONEncoder.default(self, obj)
