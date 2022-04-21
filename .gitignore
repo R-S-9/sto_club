@@ -1,3 +1,6 @@
 /venv/
 /.idea/
-/core/core/.env
+/src/core/.env
+/src/logs/
+/src/media/
+/src/static/
