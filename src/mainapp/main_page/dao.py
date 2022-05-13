@@ -16,4 +16,7 @@ class MainPageDao:
 
     @staticmethod
     def get_list_and_sort_dict(sto_list: list):
-        return sto_list.sort(key=itemgetter('rating'), reverse=True)
+        try:
+            return sto_list.sort(key=itemgetter('rating'), reverse=True)
+        except Exception:
+            return sto_list
