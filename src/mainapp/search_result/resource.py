@@ -50,6 +50,6 @@ class SearchResult(View):
         MainPageDao.get_list_and_sort_dict(data)
 
         return JsonResponse(
-            data={"data_service": str(data)},
+            data={"data_service": data},
             status=200
         )
